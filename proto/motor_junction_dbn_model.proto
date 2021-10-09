@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package motor_junction_dbn_model;
+
+message MotorJunctionDBNModel
+{
+    repeated int32 continuous_evidence_interval_num = 1;
+    repeated float ispt = 2;
+    repeated int32 iert = 3;
+    repeated float evidence_interval = 4;
+    repeated float cpt = 5;
+    repeated string continuous_evidence = 6;
+    repeated string binary_evidence = 7;
+    repeated string causal_evidence = 8;
+    int32 prior_sample_size = 9;
+};

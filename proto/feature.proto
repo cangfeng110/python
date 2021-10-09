@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package feature;
+
+import "common.proto";
+import "roadmap.proto";
+import "scenario.proto";
+
+enum MotorJunctionDBNContEvidence
+{
+    LANE_THETA = 0;
+    RATIO_LANE_DIST_TO_LANE_WIDTH = 1;
+    RATIO_LNG_DIST_TO_MOV_DIST = 2;
+    RATIO_V_TO_V_MAX = 3;
+    MOTOR_JUNCTION_DBN_CONT_EVIDENCE_NUM = 4;
+};
+
+enum MotorJunctionDBNCausalEvidence
+{
+    NEAR_LANE_TO_EXIT = 0;
+    THETA_WITHIN_RANGE = 1;
+    REVERSE_LANE_THETA = 2;
+    MOTOR_JUNCTION_DBN_CAUSAL_EVIDENCE_NUM = 3;
+};
+
+message MotorJunctionFeature
+{
+    roadmap.Junction junction = 1;
+    common.Pose obj_entry = 2;
+    repeated float motor_veh_dbn_cont_evidence = 3; // contains features of all exits
+    repeated bool motor_veh_dbn_causal_evidence = 4; // contains features of all exits
+    repeated bool dbn_cont_evidence_valid = 5;
+    repeated bool dbn_causal_evidence_valid = 6;
+};
+
+message Feature
+{
+    int32 obj_id = 1;
+    common.Pose obj_pose = 2;
+    repeated scenario.PredictionScenario scenario = 3;
+
+    MotorJunctionFeature motor_junction_feature = 4;
+};
+
+message Features
+{
+    int32 frame_idx = 1;
+    repeated Feature features = 2;
+};

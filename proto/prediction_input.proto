@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package prediction_input;
+
+import "obj_info.proto";
+import "ego_info.proto";
+import "map_input_info.proto";
+
+message PredictionExtraInput{
+    int32 obj_num = 1;
+    repeated int32 mov_obj_id_list = 2;
+    int32 play_cur_frame = 3;
+    uint64 replay_ts = 4;
+};
+
+message PredictionInput {
+    obj_info.ObjInfo obj_info = 1;
+    ego_info.EgoInfo ego_info = 2;
+    map_input_info.NearSegmentSet near_segment_set = 3;
+    map_input_info.EgoRoute ego_route = 4;
+    PredictionExtraInput extra_input = 5;
+};

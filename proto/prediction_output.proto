@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package prediction_output;
+
+message JunctionPredictionResult
+{
+   int32 junction_id = 1;
+   repeated float exit_probs = 2;
+};
+
+message PredictionResult
+{
+   int32 obj_id = 1;
+   JunctionPredictionResult junction_pred_result = 2;
+};
+
+message PredictionOutput
+{
+   int32 frame_idx = 1;
+   repeated PredictionResult pred_results = 2;
+};

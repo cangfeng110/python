@@ -1,0 +1,10 @@
+{
+    "prior_sample_size": 3000,
+    "prior_cpds":
+    {
+        "LANE_THETA": [0.01, 0.14, 0.7, 0.14, 0.01, 0.0001],
+        "RATIO_LANE_DIST_TO_LANE_WIDTH": [0.325, 0.325, 0.1, 0.1, 0.04, 0.01],
+        "RATIO_LNG_DIST_TO_MOV_DIST": [0.05, 0.05, 0.05, 0.475, 0.475],
+        "RATIO_V_TO_V_MAX": [0.35 ,0.35, 0.2, 0.05, 0.03, 0.02]
+    }
+}

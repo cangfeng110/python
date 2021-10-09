@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package map_input_info;
+
+import "roadmap.proto";
+
+message NearSegmentSet
+{
+    roadmap.SegmentSet near_segment_set = 1;
+};
+
+message EgoRoute
+{
+    roadmap.Route ego_route = 1;
+};

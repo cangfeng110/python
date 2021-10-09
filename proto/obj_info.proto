@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package obj_info;
+
+import "common.proto";
+import "roadmap.proto";
+
+enum PerceptionObjKind {
+    CAR = 0;
+    TRUCK = 1;
+    BUS = 2;
+    BICYCLE = 3;
+    TRIPLE_WHEEL = 4;
+    HUMAN = 5;
+    ANIMAL = 6;
+    OTHER = 7;
+    LINE = 8;
+    RADAR = 9;
+    DOLLY = 10;
+    CONE = 11;
+    BIRD = 12;
+    FIRE_TRUCK = 13;
+    TRAILER = 14;
+    AGV = 15;
+    BLIND_AREA = 16;
+};
+
+message PerceptionObj {
+    int32 id = 1;
+    bool is_valid = 2;
+    double x = 3;
+    double y = 4;
+    float theta = 5;
+    float vel = 6;
+    float vel_theta = 7;
+    float acc = 8;
+    float radius = 9;
+    float motion_conf = 10;
+    float position_conf = 11;
+    float kind_conf = 12;
+    PerceptionObjKind raw_obj_kind = 13;
+    uint32 moving_status = 14;
+    uint32 is_tracked = 15;
+    uint32 total_point_num = 16;
+    repeated common.Point3d vertex_point = 17;
+};
+
+message PredictionTrajectory {
+    repeated common.Pose pred_poses = 1;
+    roadmap.LaneSequenceInternal pred_lane_seq = 2;
+};
+
+message ObjCollisionInfoHistory {
+    int32 collision_traj_num = 1;
+    repeated roadmap.LaneSequence collision_lane_seq = 2;
+    repeated bool has_collision = 3;
+    repeated double ego_to_collision_dist = 4;
+    repeated double obj_to_collision_dist = 5;
+    double ego_vel = 6;
+};
+
+message ObjHistory {
+    int32 obj_id = 1;
+    ObjCollisionInfoHistory obj_collision_info_hist = 2;
+};
+
+message ObjHistorySet {
+    int32 size = 1;
+    repeated ObjHistory history_set = 2;
+};
+
+message PerceptionData {
+    bool is_mov_obj_list_valid = 1;
+    int32 size = 2;
+    repeated PerceptionObj objs = 3;
+};
+
+message ObjBasePolygon
+{
+    repeated common.ObjPolygon obj_base_polygons = 1;
+    int32 size = 2;
+};
+
+message ObjInfo {
+    PerceptionData perception_data = 1;
+    ObjHistorySet obj_history_set = 2;
+    ObjBasePolygon obj_base_polygons = 3;
+};
