@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package common;
+
+message Pos {
+    double x = 1;
+    double y = 2;
+};
+
+message Pose {
+    Pos pos = 1;
+    double theta = 2;
+};
+
+message Point3d {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+};
+
+message ObjPolygon {
+    enum PolygonType {
+        ARBITRARY = 0;
+        RECTANGLE = 1;
+    };
+
+    PolygonType type = 1;
+    uint32 vertex_num = 2;
+    repeated Point3d vertices = 3;
+    repeated Point3d axises = 4;
+    Point3d center_pt = 5;
+    double radius = 6;
+};

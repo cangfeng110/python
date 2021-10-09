@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package scenario;
+
+enum PredictionScenario {
+    INVALID_PRED_SCENARIO = 0;
+    MOTOR_REGULAR = 1;
+    MOTOR_JUNCTION = 2;
+    NON_MOTOR_REGULAR = 3;
+    NON_MOTOR_JUNCTION = 4;
+    NON_MOTOR_CROSSWALK = 5;
+    PED_CROSSWALK = 6;
+    PED_NON_CROSSWALK = 7;
+};

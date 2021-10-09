@@ -1,0 +1,12 @@
+{
+    "n_features": 4,
+
+    "feature_name": ["LANE_THETA", "RATIO_LANE_DIST_TO_LANE_WIDTH", "RATIO_LNG_DIST_TO_MOV_DIST",   				"RATIO_V_TO_V_MAX"],
+    "feature_discre":
+    {
+        "LANE_THETA": [0.0, 45.0, 70.0, 110.0, 135.0, 180.0],
+        "RATIO_LANE_DIST_TO_LANE_WIDTH": [0.0, 0.25, 0.5, 1.0, 1.5, 2.5],
+        "RATIO_LNG_DIST_TO_MOV_DIST": [-1000.0, 0.0, 0.4, 0.8, 1.0],
+        "RATIO_V_TO_V_MAX": [0.0, 0.5, 1.0, 1.5, 2.0, 3.0]
+    }
+}
